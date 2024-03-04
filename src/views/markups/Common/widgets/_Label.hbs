@@ -1,0 +1,44 @@
+{{!-- 
+Content of the widget Label
+@author zkreations
+@docs https://bloggercode-blogconnexion.blogspot.com/2019/04/widget-label.html
+@data {string} data:display - Display (list, cloud)
+--}}
+<b:includable id='widget:Label'>
+  <b:with value='data:widget.sectionId == "header"' var='isHeader'>
+    <b:attr cond='data:isHeader' name='class' value='header-labels header-widget'/>
+    <div class='widget-content'>
+      <b:with value='"labels-" + data:widget.instanceId' var='instanceId'>
+        <b:if cond='!data:isHeader'>
+          <input type='checkbox' expr:id='data:instanceId' class='labels-toggle none'/>
+        </b:if>
+        {{!-- Add the class 'labels-list' or 'labels-cloud' depending on the display --}}
+        <div expr:class='"labels g-0.5 fs-7 i-s labels-" + data:display'>
+          <b:class expr:name='data:display == "list" ? "grid auto-fit" : "flex wrap"'/>
+          <b:class cond='data:isHeader' name='justify-center'/>
+          <b:loop values='data:labels' var='label'>
+            <a class='labels-link has-icon' expr:href='data:label.url' rel='nofollow'>
+              {{!-- If the link is the current page, add the class 'is-here' --}}
+              <b:class cond='data:label.url == data:view.url' name='is-here'/>
+              {{!-- Icon --}}
+              <b:include name='@meteor' data='{ icon: "bookmark" }'/>
+              {{!-- Name --}}
+              <data:label.name/>
+              {{!-- Show the number of posts for each label --}}
+              <b:if cond='data:this.showFreqNumbers'>
+                <span class='labels-count'><data:label.count/></span>
+              </b:if>
+            </a>
+          </b:loop>
+        </div>
+        {{!-- Show the "Show more" and "Show less" buttons --}}
+        <b:if cond='!data:isHeader'>
+          <label expr:for='data:instanceId' class='labels-button'>
+            <span class='labels-more'><data:messages.showMore/> (+<b:eval expr='data:labels.length - 8'/>)</span>
+            <span class='labels-less'><data:messages.showLess/></span>
+          </label>
+        </b:if>
+      </b:with>
+    </div>
+  </b:with>
+</b:includable>

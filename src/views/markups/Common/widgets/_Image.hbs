@@ -1,0 +1,28 @@
+{{!-- 
+Content of the widget Image
+@author zkreations
+@docs https://bloggercode-blogconnexion.blogspot.com/2019/04/widget-image.html
+--}}
+<b:includable id='widget:Image'>
+  <b:attr name='class' value='header-cover'/>
+  <figure class='widget-content media relative'>
+    {{!-- Create a link if the image has a link --}}
+    <b:tag class='media-link' name='a' cond='data:link' expr:href='data:link'>
+      <b:with value='data:lazySections contains data:widget.sectionId ? "lazy" : ""' var='lazy'>
+        <b:include name='@image' data='{
+            class: "media-image",
+            src: data:sourceUrl,
+            resize: (data:widget.sectionId == "header" ? 1600 : (data:shrinkToFit ? 500 : 1280)),
+            params: data:skin.vars.c_imageParams,
+            loading: data:lazy
+          }'/>
+      </b:with>
+      {{!-- Show the image caption --}}
+      <b:if cond='data:caption'>
+        <figcaption class='media-caption absolute fs-7'>
+          <data:caption/>
+        </figcaption>
+      </b:if>
+    </b:tag>
+  </figure>
+</b:includable>

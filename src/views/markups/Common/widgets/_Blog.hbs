@@ -1,0 +1,55 @@
+{{!--
+Content of the widget Blog
+@author zkreations
+@docs https://bloggercode-blogconnexion.blogspot.com/2019/06/widget-blog.html
+@data {string} data:show.share - Share buttons
+@data {string} data:show.author - Author profile
+@data {string} data:show.timestamp - Publish date
+@data {string} data:show.comments - Comments
+@data {string} data:show.labels - Labels
+@data {string} data:show.icons - Email send button
+--}}
+<b:includable id='widget:Blog'>
+  <b:with value='data:widgets.Blog1.allBylineItems' var='show'>
+    <div class="rail m:flex">
+      <div class='rail-content flex-none m:flex none justify-center'>
+        <div class='rail-line relative'/>
+      </div>
+      <div class='rail-posts flex flex-1 column g-1 m:g-1.5'>
+        {{!-- Show in Post or Page --}}
+        <b:if cond='data:view.isSingleItem'>
+          <b:with value='data:posts.first' var='post'>
+            <b:include name='post:view'/>
+          </b:with>
+        {{!-- Show in Home or Archive --}}
+        <b:else/>
+          {{!-- If posts is empty, show a message --}}
+          <b:if cond='data:posts.empty or data:view.isError or data:view.search.query or data:view.isArchive or data:view.isLabelSearch'>
+            <div class='card flex-1 relative'>
+              <b:include name='post:type' data='{ type: "circle-exclamation" }'/>
+              {{!-- If error, no create wrapper --}}
+              <b:tag cond='!data:view.isError' name='div' class='alert'>
+                <b:include name='noContentPlaceholder'/>
+              </b:tag>
+            </div>
+          </b:if>
+          {{!-- If posts is not empty, show posts --}}
+          <b:if cond='data:posts.any'>
+            <div class='cards flex column m:g-1.25 g-1'>
+              <b:with value='data:widgets.FeaturedPost
+                filter (w => w.sectionId in ["before-content","content","after-content"])
+                map (w => w.postId)' var='featuredPostIds'>
+              <b:with value='data:view.isHomepage
+                ? data:posts filter (p => p.id not in data:featuredPostIds)
+                : data:posts' var='posts'>
+                <b:include name='post:card'/>
+              </b:with>
+              </b:with>
+            </div>
+            <b:include name='post:pagination'/>
+          </b:if>
+        </b:if>
+      </div>
+    </div>
+  </b:with>
+</b:includable>

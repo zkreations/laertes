@@ -1,0 +1,14 @@
+{{!--
+Partial: Modal content
+@author zkreations
+--}}
+<div class='modal' id='search-modal'>
+  <div class="modal-dialog relative">
+    <button class='modal-close' aria-label='close'>
+      <b:include name='@meteor' data='{ icon: "xmark" }'/>
+    </button>
+    <form class='big-search' expr:action='data:blog.searchUrl' method='get' tabindex='-1'>
+      <input class='big-search-input' autocomplete='off' name='q' expr:placeholder='data:view.search.query.escaped ?: data:messages.search' spellcheck='false' type='text'/>
+    </form>
+  </div>
+</div>

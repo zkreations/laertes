@@ -1,0 +1,50 @@
+.form {
+  &-label {
+    display: block;
+    margin-bottom: var(--form-gap);
+  }
+
+  &-section {
+    &:not(:first-child) {
+      margin-top: 1.5rem;
+    }
+  }
+
+  &-control {
+    background-color: var(--form-bg);
+    padding: var(--form-padding);
+    width: 100%;
+    border-radius: 0.5rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &-check {
+    display: flex;
+    align-items: center;
+
+    input {
+      height: 18px;
+      width: 18px;
+      margin-right: 0.75rem;
+      background-color: var(--form-bg);
+      transition: background-color var(--duration);
+      appearance: none;
+      cursor: pointer;
+
+      &:checked {
+        --form-bg: var(--primary);
+      }
+
+      &[type=radio] {
+        border-radius: 50rem;
+      }
+
+      &[type=checkbox] {
+        border-radius: 0.25rem;
+      }
+    }
+  }
+}

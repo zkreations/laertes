@@ -1,0 +1,47 @@
+$alert-types: (
+  'info',
+  'success',
+  'warning',
+  'danger',
+);
+
+.alert {
+  background-color: var(--alert-bg, var(--bg-inset));
+  color: var(--alert-color, var(--color-text));
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+
+  @each $type in $alert-types {
+    &-#{$type} {
+      --alert-bg: var(--alert-#{$type}-bg);
+      --alert-color: var(--alert-#{$type}-color);
+    }
+  }
+
+  a[href] {
+    color: var(--alert-color, var(--primary));
+    text-decoration: underline;
+  }
+}
+
+.callout {
+  background-color: var(--bg-inset);
+  color: var(--color-text);
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--typography-spacing);
+  border-radius: 0.5rem;
+
+  img {
+    margin: 0;
+  }
+
+  > *:not(#{&}-content) {
+    flex: none;
+  }
+
+  @include breakpoint(s, max) {
+    flex-direction: column;
+  }
+}

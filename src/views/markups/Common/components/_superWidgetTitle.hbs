@@ -1,0 +1,30 @@
+{{!--
+Remplace widget-title
+@param class {string} - Class name
+@docs https://bloggercode-blogconnexion.blogspot.com/1991/08/XML-renderer-widget-title.html
+--}}
+<b:includable id='widget-title'>
+  <b:include name='@attr' data='{["id"],["data-version"]}'/>
+  <b:class expr:name='data:widget.instanceId'/>
+  {{!-- if Blog widget or FeaturedPost widget in content section --}}
+  <b:if cond='(!data:defaultTitle and (["Blog"] contains data:widget.type)) or ((["FeaturedPost"] contains data:widget.type) and ["before-content","content","after-content"] contains data:widget.sectionId)'>
+    <b:attr name='class' expr:value='+(data:widget.type," ",data:widget.instanceId)'/>
+    <b:comment>Title is not needed</b:comment>
+  {{!-- If widget is AdSense or Header --}}
+  <b:elseif cond='["AdSense","Header"] contains data:widget.type'/>
+    <b:comment>Title is disabled</b:comment>
+  {{!-- If widget is in header or footer section --}}
+  <b:elseif cond='["header","footer"] contains data:widget.sectionId'/>
+    <b:comment>Title is not available</b:comment>
+  {{!-- If title is not empty --}}
+  <b:elseif cond='data:defaultTitle or data:title.length != 0'/>
+    {{!-- Title --}}
+    <div class='widget-title'>
+      <b:class cond='data:class' expr:name='data:class'/>
+      <span class='widget-name inline-flex font-title'>
+        {{!-- Show title or default title --}}
+        <b:eval expr='data:defaultTitle ?: data:title'/>
+      </span>
+    </div>
+  </b:if>
+</b:includable>

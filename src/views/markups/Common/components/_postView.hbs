@@ -1,0 +1,56 @@
+{{!-- 
+Module for generating posts view (isPost, isPage)
+@requires widget:Blog
+--}}
+<b:includable id='post:view'>
+  <b:with value='{
+      codeHighlight: data:skin.vars.p_codeHighlight,
+      codeButton: data:skin.vars.p_codeButton,
+      tocOn: data:skin.vars.p_tocOn,
+      tocHeadings: data:skin.vars.p_tocHeadings,
+      shareOn: data:skin.vars.p_shareOn,
+      adsOnPosts: data:skin.vars.p_adsOnPosts,
+      adsOnPage: data:skin.vars.p_adsOnPage,
+      related: data:skin.vars.p_related,
+      pagination: data:skin.vars.p_postPagination
+    }' var='var'>
+    <article class="card post flex column m:g-1.5 g-1">
+      {{!-- Card type --}}
+      <b:include name='post:type'/>
+      {{!-- Highlight --}}
+      <b:class cond='data:var.codeHighlight' name='has-highlight'/>
+      <b:class cond='data:var.codeButton' name='has-copy-code'/>
+      {{!-- Auto TOC --}}
+      <b:attr cond='data:var.tocOn' name='data-auto-toc' expr:value='data:var.tocOn'/>
+      <b:attr cond='data:var.tocHeading' name='data-toc-headings' expr:value='data:var.tocHeadings'/>
+      {{!--Post header --}}
+      <b:include name='post:header'/>
+      {{!-- Post body --}}
+      <section class='post-body typography'>
+        {{!-- Post content with Ads --}}
+        <b:include cond='data:var.adsOnPosts' name='post:ads1'/>
+        <b:include cond='data:var.adsOnPage' name='page:ads1'/>
+        <b:include name='post:body'/>
+        <b:include cond='data:var.adsOnPosts' name='post:ads2'/>
+        <b:include cond='data:var.adsOnPage' name='page:ads2'/>
+      </section>
+      {{!-- Hook for before post footer --}}
+      <b:include cond='data:view.isPost' name='post:beforeFooter'/>
+      {{!-- Show related posts --}}
+      <b:if cond='data:view.isPost'>
+        <b:include cond='data:post.labels.any and data:var.related' name='post:related'/>
+        <b:include cond='data:post.enclosures.any' name='post:attachments'/>
+      </b:if>
+      {{!-- Post metadata --}}
+      <b:include name="postMetadataJSON"/>
+      {{!-- Hook for after post footer --}}
+      <b:include cond='data:view.isPost' name='post:afterFooter'/>
+    
+      {{!-- Post bottom meta --}}
+      <b:include cond='data:view.isPost' name='post:bottomMeta'/>
+    </article>
+    {{!-- Determine which comment system to use --}}
+    <b:include name='post:handleComments'/>
+    <b:include cond='data:view.isPost and data:var.pagination' name='post:pagination'/>
+  </b:with>
+</b:includable>

@@ -1,0 +1,75 @@
+{{!-- 
+Content of the widget FeaturedPost
+@author zkreations
+@docs https://bloggercode-blogconnexion.blogspot.com/2019/05/widget-featuredPost.html
+@data {string} data:show.share - Share buttons
+@data {string} data:show.author - Author profile
+@data {string} data:show.timestamp - Publish date
+@data {string} data:show.comments - Comments
+@data {string} data:show.labels - Labels
+@data {string} data:show.icons - Email send button
+--}}
+<b:includable id='widget:FeaturedPost'>
+  <b:if cond='["before-content","content","after-content"] contains data:widget.sectionId'>
+    <div class="rail m:flex">
+      <div class='rail-content flex-none m:flex none justify-center'>
+        <div class='rail-line relative'/>
+      </div>
+      <div class='rail-posts flex flex-1 column g-1 m:g-1.5'>
+        <b:with value='data:widgets.Blog1.allBylineItems' var='show'>
+          <b:include name='post:card'/>
+        </b:with>
+      </div>
+    </div>
+  <b:else/>
+    <div class='widget-content'>
+      <b:with value='data:this.posts.first' var='post'>
+        <article class='featuredPost column flex g-1'>
+          {{!-- Show Image --}}
+          <b:with value='data:post.featuredImage ?: data:skin.vars.c_image' var='postImage'>
+            <b:if cond='data:this.postDisplay.showFeaturedImage and (data:postImage and data:postImage != "")'>
+              <b:with value='data:lazySections contains data:widget.sectionId ? "lazy" : ""' var='lazy'>
+                <a class='featuredPost-image ratio ratio-16:9' expr:href='data:post.url.canonical'>
+                  <b:include name='@image' data='{
+                    src: data:postImage,
+                    class: "featuredPost-image-src image-fit",
+                    resize: 300,
+                    ratio: "16:9",
+                    params: data:skin.vars.c_imageParams,
+                    loading: data:lazy
+                  }'/>
+                </a>
+              </b:with>
+            </b:if>
+          </b:with>
+          <div class="featuredPost-body flex column g-0.5">
+            {{!-- Show Title --}}
+            <b:if cond='data:this.postDisplay.showTitle'>
+              <h3 class='featuredPost-title fw-500'>
+                <a class='featuredPost-title-link' expr:href='data:post.url.canonical'>
+                  <data:post.title/>
+                </a>
+              </h3>
+            </b:if>
+            {{!-- Show Snippet --}}
+            <b:include cond='data:this.postDisplay.showSnippet' name='@snippet' data='{
+              class: "featuredPost-snippet",
+              string: data:post.snippets.long,
+              length: 100
+            }'/>
+          </div>
+          {{!-- Labels --}}
+          <b:if cond='data:post.labels.any'>
+            <div class="featuredPost-labels">
+              <b:loop index='i' values='data:post.labels' var='label'>
+                <a class='featuredPost-label' expr:href='data:label.url' expr:title='data:label.name' rel='nofollow'>
+                  #<data:label.name/>
+                </a>
+              </b:loop>
+            </div>
+          </b:if>
+        </article>
+      </b:with>
+    </div>
+  </b:if>
+</b:includable>

@@ -1,0 +1,14 @@
+{{!-- 
+Content of the widget TextList
+@author zkreations
+@docs https://bloggercode-blogconnexion.blogspot.com/2019/03/widget-textList.html
+--}}
+<b:includable id='widget:TextList'>
+  <div class='widget-content'>
+    <ul class='textlist'>
+      <b:loop values='data:items' var='item'>
+        <li class='textlist-item'><data:item/></li>
+      </b:loop>
+    </ul>
+  </div>
+</b:includable>

@@ -1,0 +1,92 @@
+{{!-- 
+Create top post meta
+@requires widget:Blog
+--}}
+<b:includable id='post:topMeta'>
+  <div class="post-top-meta relative flex wrap justify-between">
+    {{!-- Date --}}
+    <b:if cond='data:show.timestamp'>
+      <div class='post-meta-item'>
+        <a expr:href='data:post.url.canonical'>
+          <time expr:datetime='data:post.date.iso8601'><data:post.date/></time>
+        </a>
+      </div>
+    </b:if>
+    {{!-- Edit and Share --}}
+    <b:if cond='data:skin.vars.a_editShortcut or data:show.share'>
+      <div class='post-meta-right flex g-0.5'>
+        {{!-- Edit --}}
+        <b:if cond='data:skin.vars.a_editShortcut'>
+          <span expr:class='"item-control " + (data:post.adminClass ?: "blog-admin")'>
+            <div class='post-meta-item has-icon'>
+              <a class='post-edit' target='nofollow noopener noreferrer'>
+                <b:attr name='href' expr:value='+("https://www.blogger.com/blog/post/edit/",data:blog.blogId,"/",data:post.id)'/>
+                <b:include name="@meteor" data='{ icon: "pencil" }'/>
+              </a>
+            </div>
+          </span>
+        </b:if>
+        {{!-- Share --}}
+        <b:if cond='data:show.share and !data:view.isPage'>
+          <div class='post-meta-item'>
+            <button class='post-meta-share' expr:data-outside='"share-dropdown-" + data:post.id' expr:aria-label='data:messages.share'>
+              <b:include name='@meteor' data='{ icon: "share" }'/>
+            </button>
+            <div class='dropdown' expr:id='"share-dropdown-" + data:post.id'>
+              <b:include name='post:shareButtons'/>
+            </div>
+          </div>
+        </b:if>
+      </div>
+    </b:if>
+  </div>
+</b:includable>
+{{!-- 
+Create bottom post meta
+@requires widget:Blog
+--}}
+<b:includable id='post:bottomMeta'>
+  <b:if cond='(data:post.labels.any and data:show.labels) or data:show.comments'>
+    <div class="post-bottom-meta flex wrap g-1 justify-between">
+      {{!-- Author and Labels --}}
+      <b:if cond='data:show.author or (data:post.labels.any and data:show.labels)'>
+        <div class='post-meta-item flex items-center g-1'>
+          {{!-- Author --}}
+          <b:if cond='data:show.author'>
+            <a class='post-author flex-none' expr:href='data:post.author.profileUrl != "" ? data:post.author.profileUrl : data:skin.vars.c_profileUrl' rel='author noopener noreferrer nofollow' expr:title='data:post.author.name'>
+              <b:include name='@avatar' data='{
+                  class: "post-author-image",
+                  src: data:post.author.authorPhoto.image,
+                  default: data:skin.vars.c_avatar,
+                  resize: 30,
+                  loading: data:loading
+                }'/>
+            </a>
+          </b:if>
+          {{!-- Labels --}}
+          <b:if cond='data:post.labels.any and data:show.labels and !data:view.isPage'>
+            <div class="post-labels">
+              <b:loop index='i' values='data:post.labels' var='label'>
+                <a class='post-label' expr:href='data:label.url' expr:title='data:label.name' rel='nofollow'>
+                  #<data:label.name/>
+                </a>
+              </b:loop>
+            </div>
+          </b:if>
+        </div>
+      </b:if>
+      {{!-- Comments --}}
+      <b:if cond='data:show.comments'>
+        <div class='post-meta-item has-icon'>
+          <b:if cond='data:skin.vars.r_shortname != ""'>
+            <span class='disqus-comment-count' expr:data-disqus-url='data:post.url.canonical.https' expr:data-shortname='data:skin.vars.r_shortname'>0</span>
+          <b:else/>
+            <b:message name="messages.numberOfComments">
+              <b:param expr:value="data:post.numberOfComments" name="numComments"/>
+            </b:message>
+          </b:if>
+        </div>
+      </b:if>
+    </div>
+  </b:if>
+</b:includable>

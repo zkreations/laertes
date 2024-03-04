@@ -1,0 +1,36 @@
+.modal {
+  $this: &;
+
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background-color: var(--bg-overlay);
+  transition: opacity var(--duration);
+
+  &:not(.is-active) {
+    pointer-events: none;
+    opacity: 0;
+
+    #{$this}-dialog {
+      transform: scale(0.9);
+    }
+  }
+
+  &-close {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    background-color: var(--bg-inset);
+    box-shadow: var(--shadow-medium);
+    padding: 0.5rem;
+    border-radius: 999px;
+  }
+
+  &-dialog {
+    width: 85%;
+    max-width: 600px;
+    transition: transform var(--transition-config);
+  }
+}

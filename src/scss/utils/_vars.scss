@@ -1,0 +1,61 @@
+$colors: (
+  "primary",
+  "secondary",
+  "color-title",
+  "color-text",
+  "color-subtle",
+  "color-border",
+  "color-header-menu",
+  "color-header-submenu",
+  "color-header-title",
+  "color-header-subtitle",
+);
+
+$bg: (
+  "body-background-color",
+  "bg-header-menu",
+  "bg-header-submenu",
+  "bg-inset",
+  "bg-template",
+  "bg-widget",
+);
+
+$fonts: (
+  "font-title-family",
+  "font-text-family",
+);
+
+@each $color in $colors {
+  .#{$color} {
+    color: var(--#{$color});
+  }
+}
+
+@each $bg in $bg {
+  .#{$bg} {
+    background-color: var(--#{$bg});
+  }
+}
+
+
+@each $font in $fonts {
+  .#{$font} {
+    font-family: var(--#{$font});
+  }
+}
+
+// Hack to solve the dynamic font change in the Blogger customizer
+:where(.font-title) {
+  font: var(--font-title);
+  line-height: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+:where(.font-text) {
+  font: var(--font-text);
+  line-height: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+}
+

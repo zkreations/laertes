@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:js='true' {{attr root}}>
+<b:include name='m:root'/>
+<head>
+  {{!-- Title --}}
+  <title>
+    <data:view.title.escaped/>
+  </title>
+  {{!-- All meta --}}
+  <b:include name='m:head'/>
+  {{!-- Default skin --}}
+  {{> skin}}
+  {{!-- Default markups --}}
+  {{> markups}}
+  {{!-- Generate responsive image styles --}}
+  <b:if cond='not data:view.isPreview'>
+    <b:include data='{ selector: ".header", image: data:skin.vars.body_background.image }' name='responsiveImageStyle'/>
+  </b:if>
+</head>
+
+<body class='preload s:fs-6 fs-7 font-text'>
+<b:include name='@kind'/>
+<b:tag name='div' class='layout-edit' cond='data:view.isLayoutMode and data:skin.vars.a_layoutEdit'>
+  <b:with value='data:view.isHomepage ? "home" : (data:view.search.query ? "search" : ( data:view.isLabelSearch ? "labels" : data:blog.pageType))' var='pageType'>
+  <b:with value='["after-content","footer-column-1","footer-column-2","footer-column-3"]' var='lazySections'>
+    <div class='template flex column'>
+      <header class='header layout-section'>
+        {{> partial-header}}
+      </header>
+      <main class='main container flex-1'>
+        <b:with value='data:skin.vars.f_sidebarOn + "."' var="sidebarOn">
+          <div class='main-content'>
+            {{!-- Determine design configuration classes --}}
+            <b:include name='m:layoutClass'/>
+            <b:tag cond='data:view.isLayoutMode' name='div' class='layout-section'>
+              <div class='content flex column'>
+                {{> partial-content}}
+              </div>
+              {{!-- Determine if sidebar is enabled on this page type --}}
+              <b:if cond="(data:sidebarOn contains data:pageType) or data:view.isLayoutMode">
+                {{> partial-sidebar}}
+              </b:if>
+            </b:tag>
+          </div>
+        </b:with>
+      </main>
+      <footer class='footer layout-section'>
+        {{> partial-footer}}
+      </footer>
+    </div>
+    {{> partial-search}}
+  </b:with>
+  </b:with>
+</b:tag>
+<b:include name='m:foot'/>
+{{!-- Hack to remove the default Blogger Js --}}
+&lt;textarea hidden id='bjs'></body>&lt;/textarea>&lt;/body>
+</html>

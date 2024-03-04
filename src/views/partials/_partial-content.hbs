@@ -1,0 +1,26 @@
+{{!--
+Partial: Content
+@author zkreations
+--}}
+{{!-- Before Content --}}
+<b:section class='flex column m:g-1.25 g-1' id='before-content' cond='data:view.isHomepage'/>
+{{!-- Content --}}
+<b:section class='flex column m:g-1.25 g-1' id='content'>
+  <b:widget id='Blog1' type='Blog' cond='data:view.isHomepage ? data:skin.vars.f_blogOnHome : true' version='2' locked='true'>
+    {{!-- Custom Metadata include --}}
+    <b:includable id='postMetadataJSONImage'>
+      <b:with value='resizeImage(data:post.featuredImage, 1200, "1200:630")' var='image'>
+        <b:if cond='data:image'>
+          "image": {
+            "@type": "ImageObject",
+            "url": "<b:eval expr='data:image.jsonEscaped'/>",
+            "width": <b:eval expr='data:image.width'/>,
+            "height":  <b:eval expr='data:image.height'/>
+          },
+        </b:if>
+      </b:with>
+    </b:includable>
+  </b:widget>
+</b:section>
+{{!-- After Content --}}
+<b:section class='flex column m:g-1.25 g-1' id='after-content' cond='data:view.isHomepage'/>

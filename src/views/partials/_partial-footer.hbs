@@ -1,0 +1,38 @@
+{{!--
+Partial: Footer content
+@author zkreations
+--}}
+<b:if cond='data:widgets any (w => w.sectionId contains "footer-column-")'>
+  <div class='footer-upper container grid auto-fill'>
+    <b:section id='footer-column-1' class='footer-upper-item'>
+      <b:widget type='Profile' version='2'/>
+    </b:section>
+    <b:section id='footer-column-2' class='footer-upper-item'>
+      <b:widget type='PopularPosts' title='Popular Posts' version='2'/>
+    </b:section>
+    <b:section id='footer-column-3' class='footer-upper-item'>
+      <b:widget type='FeaturedPost' version='2'/>
+    </b:section>
+  </div>
+</b:if>
+<div class='footer-lower'>
+  <b:section id='footer' class='container flex l:row column g-1 justify-between items-center' maxwidgets='2'>
+    {{!-- Custom HTML widget (Copyright) --}}
+    <b:widget type='HTML' title='Copyright' version='2' locked='true'>
+      <b:widget-settings>
+        <b:widget-setting name='content'><![CDATA[Developed by <a href="https://zkreations.com" rel="noopener noreferrer nofollow" target="_blank" property="cc:attributionName">zkreations</a> — © Your Copyright 20XX]]></b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+        <b:include name='widget:HTML_Copyright'/>
+      </b:includable>
+      <b:includable id='content'/>
+    </b:widget>
+    {{!-- Custom LinkList widget (Social Networks) --}}
+    <b:widget type='LinkList' title='Social Networks' version='2' locked='true'>
+      <b:includable id='main'>
+        <b:include name='widget:LinkList_SocialNetworks'/>
+      </b:includable>
+      <b:includable id='content'/>
+    </b:widget>
+  </b:section>
+</div>

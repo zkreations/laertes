@@ -1,0 +1,103 @@
+// Individual card
+.card {
+  line-height: 1.75;
+  background-color: var(--bg-card);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  filter: var(--drop-shadow);
+
+  @include breakpoint(m) {
+    padding: var(--padding-card);
+
+    &::before {
+      content: "";
+      position: absolute;
+      border-width: var(--card-arrow-size) var(--card-arrow-size) var(--card-arrow-size) 0;
+      border-style: solid;
+      border-color: transparent var(--bg-card) transparent;
+      left: calc(var(--card-arrow-size) * -1);
+      top: var(--card-type-top, 4rem);
+      transform: translateY(-50%);
+    }
+  }
+
+  // Content of the card
+  &-content {
+    position: relative;
+    display: block;
+  }
+
+  &-title {
+    &-link:not(:hover) {
+      color: var(--color-title);
+    }
+  }
+
+  &-snippet {
+    // Code snippet
+  }
+
+  &-image {
+    background-color: var(--bg-inset);
+  }
+
+  &-text {
+    --i-size: 36px;
+    margin-bottom: 1rem;
+  }
+
+  &-alert {
+    color: var(--alert-warning-color);
+  }
+
+  &-type {
+    transform: translate(-50%,-50%);
+    border-radius: 999px;
+    border: 4px solid var(--bg-card);
+    box-shadow: var(--shadow-medium);
+    position: absolute;
+    background-color: var(--card-type-bg, var(--bg-inset));
+    color: var(--card-type-color, var(--color-text));
+    top: var(--card-type-top, 4rem);
+    padding: 0.5rem;
+    left: calc((var(--rail-width) * -1) / 2);
+
+    // Types of cards
+    &-circle-exclamation {
+      --card-type-top: 50%;
+    }
+  }
+}
+
+.rail {
+  &-content {
+    width: var(--rail-width);
+  }
+
+  &-line {
+    width: 2px;
+    height: 100%;
+    background-color: var(--color-border);
+
+    &::after,
+    &::before {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 10px;
+      background-color: var(--color-border);
+      border-radius: 999px;
+      left: 50%;
+      position: absolute;
+      transform: translateX(-50%);
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+  }
+}

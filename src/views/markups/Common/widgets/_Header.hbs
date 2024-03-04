@@ -1,0 +1,55 @@
+{{!--
+Content of the widget Header
+@author zkreations
+@docs https://bloggercode-blogconnexion.blogspot.com/2019/05/widget-header.html
+@data {string} data:imagePlacement - Image placement (BEHIND, REPLACE, BEFORE_DESCRIPTION)
+--}}
+<b:includable id='widget:Header'>
+  <b:if cond='data:widget.sectionId != "header"'>
+    {{!-- If sectionId is not "header" --}}
+    <data:messages.theresNothingHere/>
+
+  {{!-- If sectionId is "header" --}}
+  <b:else/>
+    <b:attr name='class' value='header-wrapper'/>
+    <div class='container flex items-center m:g-1.5 g-1'>
+      <div class='header-profile'>
+        <b:include name='@avatar' data='{
+          class: "header-profile-image",
+          src: data:skin.vars.c_headerAvatar,
+          default: data:skin.vars.c_avatar,
+          resize: 86,
+          params: data:skin.vars.c_imageParams
+        }'/>
+      </div>
+      <div class='header-brand'>
+        {{!-- If image exists --}}
+        <b:if cond='data:image'>
+          <a class="header-logo" expr:href='data:blog.homepageUrl'>
+            <b:include name='@image' data='{
+              class: "header-logo-image",
+              src: data:image,
+              width: data:width,
+              height: data:height,
+              params: data:skin.vars.c_imageParams
+            }'/>
+          </a>
+        </b:if>
+        {{!-- If imagePlacement is "BEHIND" --}}
+        <b:if cond='data:imagePlacement == "BEHIND"'>
+          <div class="header-title fs-4 m:fs-2 font-title">
+            <a expr:href='data:blog.homepageUrl'>
+              <data:title/>
+            </a>
+          </div>
+        </b:if>
+        {{!-- If description exists and imagePlacement is not "REPLACE" --}}
+        <b:if cond='data:description and data:imagePlacement != "REPLACE"'>
+          <div class="header-subtitle">
+            <data:description/>
+          </div>
+        </b:if>
+      </div>
+    </div>
+  </b:if>
+</b:includable>

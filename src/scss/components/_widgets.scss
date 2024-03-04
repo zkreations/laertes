@@ -1,0 +1,233 @@
+.widget {
+  background-color: var(--bg-widget);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  filter: var(--drop-shadow);
+
+  @include breakpoint(m) {
+    padding: var(--padding-widget);
+  }
+  
+  @at-root :where(.header) & {
+    margin: 1rem;
+  }
+
+  &-title {
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  &-name {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-widget);
+  }
+
+
+  &:last-child {
+    position: var(--widget-position, static);
+    top: 1.25rem;
+  }
+
+  // if ads is unfilled, hide widget
+  &.AdSense:has(ins[data-ad-status=unfilled]) {
+    display: none;
+  }
+}
+
+// Widget: BlogSearch
+.search {
+  // Form
+}
+
+// Widget: FeaturedPost
+.featuredPost {
+  &-title-link {
+    &:not(:hover) {
+      color: var(--color-title);
+    }
+  }
+
+  &-labels {
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  &-label:not(:hover) {
+    color: var(--color-text);
+  }
+}
+
+// Widget: PopularPosts
+.populars {
+  --cols-min: 18rem;
+
+  &-card {
+    filter: var(--drop-shadow);
+    background-color: var(--bg-widget);
+    border-radius: 0.5rem;
+    padding: 1rem;
+
+    @include breakpoint(m) {
+      padding: var(--padding-widget);
+    }
+  }
+
+  &-image {
+    background-color: var(--bg-inset);
+    max-width: 40px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  &-title-link {
+    &:not(:hover) {
+      color: var(--color-title);
+    }
+  }
+
+}
+
+// Widget: PageList
+.pages {
+  display: flex;
+  gap: .5rem;
+  flex-direction: column;
+
+  &-link {
+    color: var(--color-text);
+
+    &:hover, &.is-here {
+      color: var(--primary);
+    }
+  }
+}
+
+// Widget: Label
+.labels {
+  &-link {
+    color: var(--color-text);
+    text-transform: capitalize;
+    padding: 0.5rem 0.75rem;
+    transition: border-color var(--duration), color var(--duration);
+    background-color: var(--btn-bg);
+    border-radius: 0.5rem;
+
+    &:hover, &.is-here {
+      color: var(--primary);
+    }
+
+    svg {
+      color: var(--color-subtle);
+    }
+  }
+
+  &-count {
+    color: var(--color-subtle);
+    margin-inline-start: auto;
+  }
+
+  &-list {
+    --cols-min: 10rem;
+  }
+
+  &-toggle {
+    &:not(:checked) + * :nth-child(n+9) {
+      display: none;
+    }
+  }
+
+  &-button {
+    margin-top: 1rem;
+    display: inline-flex;
+    color: var(--primary);
+    cursor: pointer;
+  }
+
+  &-toggle:checked ~ &-button &-more,
+  &-toggle:not(:checked) ~ &-button &-less {
+    display: none;
+  }
+}
+
+// Widget: LinkList
+.links {
+  // Links
+}
+
+// Widget: Profile
+.profile {
+  &-image {
+    img {
+      border-radius: 0.5rem;
+    }
+  }
+
+  &-name {
+    &:not(:hover) {
+      color: var(--color-title);
+    }
+  }
+
+  &-locale {
+    margin-top: 1rem;
+
+     svg {
+        color: var(--color-subtle);
+    }
+  }
+}
+
+// Widget: BlogArchive
+.hierarchy {
+  &-list {
+    border-inline-start: 2px solid var(--color-border);
+    padding-inline-start: 1rem;
+    transition: border-color var(--duration);
+  }
+
+  &-date {
+    margin-bottom: .5rem;
+    display: block;
+  }
+
+  &-name {
+    color: var(--color-title);
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+
+  &-content {
+    margin-bottom: .75rem;
+  }
+
+  &-post-link {
+    color: var(--color-text);
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}
+
+// Widget: Image
+.media {
+  &-caption {
+    color: var(--white);
+    bottom: 0.5rem;
+    left: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg-overlay);
+  }
+}
+
+// Widget: ContactForm
+
+.contact {
+  &-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

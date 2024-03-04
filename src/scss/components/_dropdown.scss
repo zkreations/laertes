@@ -1,0 +1,29 @@
+.dropdown {
+  top: var(--drop-top, 0);
+  right: var(--drop-right, 0);
+  left: var(--drop-left, auto);
+  min-width: var(--drop-width, auto);
+  padding: var(--drop-padding, 1rem);
+  transform-origin: var(--drop-origin, top right);
+  position: absolute;
+  border-radius: .5rem;
+  transition: transform var(--transition-config), opacity var(--duration);
+  box-shadow: var(--shadow-medium);
+  z-index: 10;
+  background-color: var(--white);
+
+  @at-root [data-theme=dark] & {
+    background-color: var(--bg-inset);
+  }
+
+  &:not(.is-active) {
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(.9);
+  }
+
+  &-link {
+    display: block;
+    margin-top: .5rem;
+  }
+}

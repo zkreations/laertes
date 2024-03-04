@@ -1,0 +1,24 @@
+{{!-- 
+Content of the widget HTML
+@author zkreations
+@docs https://bloggercode-blogconnexion.blogspot.com/2019/04/widget-html.html
+--}}
+<b:includable id='widget:HTML'>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+</b:includable>
+{{!-- 
+Copyright of the site
+@author zkreations
+--}}
+<b:includable id='widget:HTML_Copyright'>
+  <b:include name='@attr' data='{
+    ["id"],
+    ["data-version"],
+    ["class","footer-copyright"]}'/>
+  {{!-- Copyright --}}
+  <small class="fs-7">
+    <data:content/>
+  </small>
+</b:includable>

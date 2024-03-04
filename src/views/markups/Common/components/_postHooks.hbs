@@ -1,0 +1,64 @@
+{{!--
+Hook for post type
+@author zkreations
+--}}
+<b:includable id='post:type'>
+  <b:with value='data:post.featuredImage ?: data:skin.vars.c_image' var='postImage'>
+  <b:with value='data:postImage and data:postImage != ""' var='hasImage'>
+    <b:with value='(data:postImage.isYouTube ? "film" : (data:hasImage ? "image" : "text"))' var='cardType'>
+      <b:class expr:name='"card-type-" + (data:type ?: data:cardType)'/>
+      <div class='card-type m:block none'>
+        <b:include name='@meteor' data='{ icon: (data:type ?: (data:widget.type == "FeaturedPost" ? "pin" : data:cardType)) }'/>
+      </div>
+    </b:with>
+  </b:with>
+  </b:with>
+</b:includable>
+{{!--
+Hook for post & page header
+@author zkreations
+--}}
+<b:includable id='post:header'>
+  {{!--Post header --}}
+  <header class='post-header flex column g-1'>
+    <b:include name='post:topMeta'/>
+    <h1 class='post-title fw-500 m:fs-4'>
+      <data:post.title.escaped/>
+    </h1>
+  </header>
+</b:includable>
+{{!--
+Hook for post share buttons
+@author zkreations
+--}}
+<b:includable id='post:shareButtons'>
+  <b:include name='@shared' data='{
+      class: "post-share column flex g-0.75",
+      list: data:var.shareOn,
+      params: {
+        title: data:post.title.escaped,
+        url: data:post.url.canonical
+      }
+    }'/>
+</b:includable>
+{{!--
+Hook for post body
+@author zkreations
+--}}
+<b:includable id='post:body'>
+  <data:post.body/>
+</b:includable>
+{{!--
+Hook for after post footer
+@author zkreations
+--}}
+<b:includable id='post:afterFooter'>
+  <!-- After post footer-->
+</b:includable>
+{{!--
+Hook for before post footer
+@author zkreations
+--}}
+<b:includable id='post:beforeFooter'>
+  <!-- Before post footer-->
+</b:includable>

@@ -1,0 +1,57 @@
+{{!--
+Content of the widget Profile
+@author zkreations
+@docs https://bloggercode-blogconnexion.blogspot.com/2019/04/widget-profile.html
+@data {string} data:team - Show team members
+--}}
+<b:includable id='widget:Profile'>
+  <div class='widget-content'>
+    <b:with value='data:lazySections contains data:widget.sectionId ? "lazy" : ""' var='lazy'>
+      <div class='profile'>
+        <div class='profile-wrapper flex'>
+          {{!-- Show team members --}}
+          <b:if cond='data:team'>
+            <b:class name='profile-team g-0.75 wrap'/>
+            <b:loop values='data:authors' var='author'>
+              <a class='profile-image' expr:href='data:author.userUrl' rel='nofollow' expr:title='data:author.display-name'>
+                <b:include name='@avatar' data='{
+                  src: data:author.authorPhoto.image,
+                  default: data:skin.vars.c_avatar,
+                  resize: 50,
+                  loading: data:lazy
+                }'/>
+              </a>
+            </b:loop>
+          {{!-- Show individual profile --}}
+          <b:else/>
+            <b:class name='profile-user g-1'/>
+
+            <div class='profile-body flex column g-0.5'>
+              {{!-- Show author name --}}
+              <a class='profile-name fw-500' expr:href='data:this.userUrl' rel='nofollow'><data:this.displayname/></a>
+              {{!-- Show author description --}}
+              <b:if cond='data:this.aboutme != ""'>
+                <p class='profile-snippet'><data:this.aboutme/></p>
+              </b:if>
+            </div>
+            <a class='profile-image flex-none' expr:href='data:this.userUrl' rel='nofollow' expr:title='data:this.displayname'>
+              <b:include name='@avatar' data='{
+                src: data:this.authorPhoto.image,
+                default: data:skin.vars.c_avatar,
+                resize: 60,
+                loading: data:lazy
+              }'/>
+            </a>
+          </b:if>
+        </div>
+        {{!-- Show author location --}}
+        <b:if cond='!data:team and data:this.showlocation and data:this.location != ""'>
+          <p class='profile-locale fw-300 has-icon'>
+            <b:include name='@meteor' data='{ icon: "location-dot", class: "flex-none" }'/>
+            <data:this.location/>
+          </p>
+        </b:if>
+      </div>
+    </b:with>
+  </div>
+</b:includable>

@@ -1,0 +1,14 @@
+{{!--
+Partial: Header content
+@author zkreations
+--}}
+<b:section id='header'>
+  {{!-- Custom PageList widget (Menu) --}}
+  <b:widget type='PageList' version='2' locked='true'>
+    <b:includable id='content'/>
+    <b:includable id='main'>
+      <b:include name='widget:PageList_Menu'/>
+    </b:includable>
+  </b:widget>
+  <b:widget type='Header' version='2' locked='true'/>
+</b:section>

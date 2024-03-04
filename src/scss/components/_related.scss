@@ -1,0 +1,14 @@
+.related {
+  &-image {
+    background-color: var(--bg-inset);
+    width: 30px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  &-item {
+    &:not(:hover) {
+      color: var(--color-title);
+    }
+  }
+}

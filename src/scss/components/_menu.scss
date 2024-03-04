@@ -1,0 +1,190 @@
+
+.menu {
+  color: var(--color-header-menu);
+
+  @include breakpoint(l, max) {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &-toggle {
+    @include breakpoint(l) {
+      display: none;
+    }
+
+    @include breakpoint(l, max) {
+      &::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 90;
+        background-color: var(--bg-overlay);
+        transition: opacity var(--duration);
+        pointer-events: none;
+      }
+
+      &:not(.is-active)::before {
+        opacity: 0
+      }
+    }
+  }
+
+  &-search {
+    transition: color var(--duration);
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+
+  &-scheme {
+    --toggle-size: 12px;
+    --toggle-padding: 4px;
+    background-color: var(--toggle-bg, #404040);
+    padding: var(--toggle-padding);
+    border-radius: 999px;
+    width: calc((var(--toggle-size) * 2) + (var(--toggle-padding) * 2));
+    transition: background-color var(--transition-config);
+
+    &::before {
+      content: "";
+      width: var(--toggle-size);
+      height: var(--toggle-size);
+      display: block;
+      border-radius: 999px;
+      background-color: var(--white);
+      box-shadow: var(--shadow-low);
+      transform: translateX(var(--toggle-translate, 0));
+      transition: transform var(--transition-config);
+    }
+  }
+}
+
+.nav {
+  $this: &;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: var(--nav-direction, column);
+
+  @include breakpoint(l) {
+    justify-content: center;
+  }
+
+  &-item {
+    &:hover > #{$this}-link {
+      color: var(--primary);
+    }
+
+    position: relative;
+
+    @include breakpoint(l) {
+      &:not(:hover) > #{$this}-subnav {
+        pointer-events: none;
+        transform: translateY(-1rem) scale(0.9);
+        opacity: 0;
+      }
+    }
+
+    &-toggle {
+      padding: var(--nav-link-padding, 1rem);
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      @include breakpoint(l) {
+        display: none;
+      }
+    }
+
+    @include breakpoint(l, max) {
+      &:not(.is-open) > #{$this}-subnav {
+        display: none;
+      }
+    }
+  }
+
+  &-link {
+    display: inline-flex;
+    align-items: center;
+    column-gap: var(--icon-gap, .5rem);
+    padding: var(--nav-link-padding, 1.25rem 0);
+    width: 100%;
+    color: var(--color-header-menu);
+    
+    @include breakpoint(l, max) {
+      .i {
+        display: none;
+      }
+    }
+  }
+
+  &-show {
+    @include breakpoint(l) {
+      --nav-toggle: none;
+      --nav-direction: row;
+      --nav-subnav: absolute;
+    }
+
+    @include breakpoint(l, max) {
+      --nav-link-padding: .5rem 1rem;
+      background-color: var(--bg-header-menu);
+      box-shadow: var(--shadow-high);
+      transform: translateX(100%);
+      inset: 0 100% 0 auto;
+      position: fixed;
+      z-index: 100;
+      width: 100%;
+      padding: 2rem 1rem;
+      max-width: 240px;
+      overflow-y: auto;
+      transition: transform var(--transition-config), opacity var(--duration);
+
+      &:not(.is-active) {
+        transform: translateX(0);
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &-subnav {
+    @include breakpoint(l, max) {
+      padding-inline-start: 1rem;
+    }
+
+    @include breakpoint(l) {
+      white-space: nowrap;
+      background-color: var(--bg-header-submenu);
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-radius: 0.5rem;
+      filter: var(--drop-shadow);
+      will-change: transform, opacity;
+      transition: transform var(--transition-config), opacity var(--duration);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 10;
+      min-width: 100%;
+      --nav-link-padding: .5rem 1rem;
+      --color-header-menu: var(--color-header-submenu);
+
+      &::before {
+        content: "";
+        border-width: 0 var(--subnav-arrow-size) var(--subnav-arrow-size);
+        border-style: solid;
+        border-color: transparent transparent var(--bg-header-submenu);
+        position: absolute;
+        top: calc(var(--subnav-arrow-size) * -1);
+        left: 1rem;
+      }
+    }
+
+    @include breakpoint(l, max) {
+      --frame-translate-y: 1rem;
+      --frame-translate-x: 0;
+      animation: frames var(--duration) both;
+      transform-origin: top left;
+    }
+  }
+}

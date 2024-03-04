@@ -1,0 +1,77 @@
+{{!--
+Content of the widget PageList
+@author zkreations
+@docs https://bloggercode-blogconnexion.blogspot.com/2019/04/widget-pageList.html
+--}}
+<b:includable id='widget:PageList'>
+  <b:if cond='data:widget.sectionId == "header"'>
+    <b:include name='widget:PageList_Navbar'/>
+  <b:else/>
+    <div class='widget-content pages'>
+      <b:loop values='data:links' var='link'>
+        <a class='pages-link' expr:href='data:link.href'>
+          <b:class cond='data:link.isCurrentPage' name='is-here'/>
+          <b:if cond='data:link.href contains "?ref="'>
+            <b:attr name='target' value='_blank'/>
+            <b:attr name='rel' value='noopener noreferrer nofollow'/>
+          </b:if>
+          <data:link.title/>
+        </a>
+      </b:loop>
+    </div>
+  </b:if>
+</b:includable>
+{{!-- 
+Menu
+@author zkreations
+--}}
+<b:includable id='widget:PageList_Menu'>
+  <b:include name='@attr' data='{
+    ["id"],
+    ["data-version"],
+    ["class","header-menu"]}'/>
+  <div class="container">
+    <div class="menu relative flex justify-between">
+      <button class='menu-toggle' aria-label='toggle' expr:data-outside='data:widget.instanceId'>
+        <b:include name='@meteor' data='{ icon: "bars" }'/>
+      </button>
+      <div class='nav-show' expr:id='data:widget.instanceId'>
+        <b:include name='@menu' data='{ links: data:links, class: "fs-7 fw-500 l:g-1.5" }'/>
+      </div>
+      <div class='menu-right flex g-0.75 items-center'>
+        {{!-- Scheme toggle --}}
+        <b:if cond='!data:view.isPreview and data:skin.vars.c_uiToggle'>
+          <button class='menu-scheme js-scheme' aria-label='Toggle theme' type='button'>
+          </button>
+        </b:if>
+        <button class='menu-search' expr:aria-label='data:messages.search' data-modal='search-modal'>
+          <b:include name='@meteor' data='{ icon: "search" }'/>
+        </button>
+      </div>
+    </div>
+  </div>
+</b:includable>
+{{!-- 
+Navbar
+@author zkreations
+--}}
+<b:includable id='widget:PageList_Navbar'>
+  <b:attr name='class' value='header-navbar'/>
+  <div class='container flex wrap g-1 fw-500 fs-7'>
+    <b:loop values='data:links where (l => l.title not in data:skin.vars.o_social)' var='link'>
+      <a class="header-link has-icon" expr:href='data:link.href'>
+        <b:class cond='data:link.isCurrentPage' name='is-here'/>
+        <data:link.title/>
+      </a>
+    </b:loop>
+    <b:if cond='data:links any (l => l.title in data:skin.vars.o_social)'>
+      <div class='header-social none m:flex wrap items-center g-1'>
+        <b:loop values='data:links where (l => l.title in data:skin.vars.o_social)' var='link'>
+          <a class='header-link' expr:href='data:link.href' expr:aria-label='data:link.title' target="_blank" rel="noopener noreferrer nofollow">
+            <b:include name='@meteor' data='{ icon: data:link.title }'/>
+          </a>
+        </b:loop>
+      </div>
+    </b:if>
+  </div>
+</b:includable>
