@@ -151,7 +151,7 @@
     [string] Show sidebar on (home, index, search, labels, archive, item, static_page, error_page)
     <Variable name="f.sidebarOn" description="f.sidebarOn" type="string" value="home, index, search, labels, archive, item, static_page, error_page"/>
     
-    [boolean|string] Sticky mode for sidebar (post, page, single, last, last-in-post, last-in-page, last-in-single)
+    [boolean|string] Sticky mode for sidebar (home, post, page, single, last, last-in-home, last-in-post, last-in-page, last-in-single)
     <Variable name="f.stickySidebar" description="f.stickySidebar" type="string" value="false"/>
   
     Translatable strings
@@ -4240,9 +4240,12 @@
         <b:class cond='data:skin.vars.f_mainReverse' name='main-content-reverse'/>
         <b:class cond='!(data:sidebarOn contains data:pageType)' name='main-content-full'/>
       
-        <b:with value='[ "true", "post", "page", "single", "last", "last-in-post", "last-in-page", "last-in-single" ] contains data:skin.vars.f_stickySidebar' var='stickyMode'>
+        <b:with value='[ "true", "home", "post", "page", "single", "last", "last-in-home", "last-in-post", "last-in-page", "last-in-single" ] contains data:skin.vars.f_stickySidebar' var='stickyMode'>
           <b:if cond='data:stickyMode'>
             <b:switch var='data:skin.vars.f_stickySidebar'>
+              <b:case value='home'/>
+              <b:class cond='data:view.isHomepage' name='has-sticky-sidebar'/>
+      
               <b:case value='post'/>
               <b:class cond='data:view.isPost' name='has-sticky-sidebar'/>
       
@@ -4254,6 +4257,9 @@
       
               <b:case value='last'/>
               <b:class name='has-sticky-widget'/>
+      
+              <b:case value='last-in-home'/>
+              <b:class cond='data:view.isHomepage' name='has-sticky-widget'/>
       
               <b:case value='last-in-post'/>
               <b:class cond='data:view.isPost' name='has-sticky-widget'/>
