@@ -1537,6 +1537,28 @@ ins.adsbygoogle[data-ad-status=unfilled] {
   background-color: var(--bg-widget);
 }
 
+.font-title-family {
+  font-family: var(--font-title-family);
+}
+
+.font-text-family {
+  font-family: var(--font-text-family);
+}
+
+:where(.font-title) {
+  font: var(--font-title);
+  line-height: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+:where(.font-text) {
+  font: var(--font-text);
+  line-height: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
 .absolute {
   position: absolute;
 }
@@ -2048,28 +2070,6 @@ ins.adsbygoogle[data-ad-status=unfilled] {
 
 .events-auto {
   pointer-events: auto;
-}
-
-.font-title-family {
-  font-family: var(--font-title-family);
-}
-
-.font-text-family {
-  font-family: var(--font-text-family);
-}
-
-:where(.font-title) {
-  font: var(--font-title);
-  line-height: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-}
-
-:where(.font-text) {
-  font: var(--font-text);
-  line-height: inherit;
-  font-weight: inherit;
-  font-size: inherit;
 }
 
 .fs-1 {
