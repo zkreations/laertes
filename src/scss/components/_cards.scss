@@ -16,7 +16,7 @@
       border-style: solid;
       border-color: transparent var(--bg-card) transparent;
       left: calc(var(--card-arrow-size) * -1);
-      top: var(--card-type-top, 4rem);
+      top: var(--card-type-top, 3rem);
       transform: translateY(-50%);
     }
   }
@@ -58,7 +58,7 @@
     position: absolute;
     background-color: var(--card-type-bg, var(--bg-inset));
     color: var(--card-type-color, var(--color-text));
-    top: var(--card-type-top, 4rem);
+    top: var(--card-type-top, 3rem);
     padding: 0.5rem;
     left: calc((var(--rail-width) * -1) / 2);
 
