@@ -807,6 +807,8 @@ ins.adsbygoogle[data-ad-status=unfilled] {
 }
 .header-social {
   margin-inline-start: auto;
+}
+.header-navbar {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
