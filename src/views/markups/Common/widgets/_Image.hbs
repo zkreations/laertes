@@ -4,7 +4,7 @@ Content of the widget Image
 @docs https://bloggercode-blogconnexion.blogspot.com/2019/04/widget-image.html
 --}}
 <b:includable id='widget:Image'>
-  <b:attr name='class' value='header-cover'/>
+  <b:attr cond='data:widget.sectionId == "header"' name='class' value='header-cover'/>
   <figure class='widget-content media relative'>
     {{!-- Create a link if the image has a link --}}
     <b:tag class='media-link' name='a' cond='data:link' expr:href='data:link'>
