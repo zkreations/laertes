@@ -1,0 +1,53 @@
+title = 'Laertes'
+baseURL = 'https://laertes.hudocs.com/'
+
+copyright = "Created by [zkreations](https://www.zkreations.com)"
+canonifyURLs = true
+enableRobotsTXT = true
+enableGitInfo = true
+
+enableInlineShortcodes = true
+disableKinds = ["taxonomy","taxonomyTerm","term","RSS"]
+
+languageCode = 'es'
+defaultContentLanguage = 'es'
+
+summaryLength = 20
+
+# Shortcodes HTML
+[markup]
+  [markup.highlight]
+    noClasses = false
+
+  [markup.goldmark.renderer]
+    unsafe = true
+
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[params]
+  description = "Documentacion del tema Laertes"
+  github_repo_edit = "https://github.com/zkreations/laertes/blob/main/site/content"
+  date_format = "January 2, 2006"
+  versions = [ "1.0" ]
+  badge_url = "https://store.zkreations.com/2024/03/laertes-tema-personal.html"
+  main_icon = "columns"
+  # main_logo = "tu-logo.svg"
+
+[module]
+  [[module.mounts]]
+    source = 'site/content'
+    target = 'content'
+  [[module.mounts]]
+    source = 'site/static'
+    target = 'static'
+  [[module.mounts]]
+    source = 'site/layouts'
+    target = 'layouts'
+  [[module.mounts]]
+    source = 'site/assets'
+    target = 'assets'
+  [[module.mounts]]
+    source = 'site/i18n'
+    target = 'i18n'
