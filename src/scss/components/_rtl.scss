@@ -1,6 +1,42 @@
 [dir=rtl] {
+  direction: rtl;
+
+  &[data-theme=dark] .js-scheme {
+    --toggle-translate: -100%;
+  }
+
   .i-arrow-right-long,
   .i-arrow-left-long {
     transform: rotate(180deg);
+  }
+
+  .card {
+    &::before {
+      left: auto;
+      right: calc(var(--card-arrow-size)* -1);
+    }
+
+    &-type {
+      left: auto;
+      right: calc(var(--rail-width)* -1 / 2);
+      transform: translate(50%, -50%);
+    }
+  }
+
+  .nav-item-toggle {
+    right: auto;
+    left: 0;
+  }
+
+  @include breakpoint(l, max) {
+    .nav-show {
+      left: 100%;
+      right: auto;
+      transform: translateX(-100%);
+
+      &:not(.is-active) {
+        transform: translateX(0);
+      }
+    }
   }
 }

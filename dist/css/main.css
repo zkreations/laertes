@@ -714,7 +714,8 @@ ins.adsbygoogle[data-ad-status=unfilled] {
   .card::before {
     content: "";
     position: absolute;
-    border-width: var(--card-arrow-size) var(--card-arrow-size) var(--card-arrow-size) 0;
+    border-width: var(--card-arrow-size);
+    border-inline-start: 0;
     border-style: solid;
     border-color: transparent var(--bg-card) transparent;
     left: calc(var(--card-arrow-size) * -1);
@@ -1470,9 +1471,38 @@ ins.adsbygoogle[data-ad-status=unfilled] {
   --ratio-y: 7;
 }
 
+[dir=rtl] {
+  direction: rtl;
+}
+[dir=rtl][data-theme=dark] .js-scheme {
+  --toggle-translate: -100%;
+}
 [dir=rtl] .i-arrow-right-long,
 [dir=rtl] .i-arrow-left-long {
   transform: rotate(180deg);
+}
+[dir=rtl] .card::before {
+  left: auto;
+  right: calc(var(--card-arrow-size) * -1);
+}
+[dir=rtl] .card-type {
+  left: auto;
+  right: calc(var(--rail-width) * -1 / 2);
+  transform: translate(50%, -50%);
+}
+[dir=rtl] .nav-item-toggle {
+  right: auto;
+  left: 0;
+}
+@media (max-width: 991px) {
+  [dir=rtl] .nav-show {
+    left: 100%;
+    right: auto;
+    transform: translateX(-100%);
+  }
+  [dir=rtl] .nav-show:not(.is-active) {
+    transform: translateX(0);
+  }
 }
 
 .primary {

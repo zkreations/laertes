@@ -12,7 +12,8 @@
     &::before {
       content: "";
       position: absolute;
-      border-width: var(--card-arrow-size) var(--card-arrow-size) var(--card-arrow-size) 0;
+      border-width: var(--card-arrow-size);
+      border-inline-start: 0;
       border-style: solid;
       border-color: transparent var(--bg-card) transparent;
       left: calc(var(--card-arrow-size) * -1);
