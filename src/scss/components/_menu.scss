@@ -110,7 +110,7 @@
     padding: var(--nav-link-padding, 1.25rem 0);
     width: 100%;
     color: var(--color-header-menu);
-    
+
     @include breakpoint(l, max) {
       .i {
         display: none;

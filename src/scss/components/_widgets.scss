@@ -7,7 +7,7 @@
   @include breakpoint(m) {
     padding: var(--padding-widget);
   }
-  
+
   @at-root :where(.header) & {
     margin: 1rem;
   }

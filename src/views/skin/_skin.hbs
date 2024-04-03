@@ -1,11 +1,11 @@
-{{!-- 
+{{!--
 Variables b:skin
 @author zkreations
 @docs https://bloggercode-blogconnexion.blogspot.com/2014/06/tag-b-skin-b-template-skin.html
 --}}
 <b:if cond="!data:view.isLayoutMode">
   {{!-- Skin (for Customization Mode) --}}
-  <b:skin><![CDATA[
+  <b:skin version='{{version}}'><![CDATA[
   /*!
     * Name      : {{name}}
     * Theme URL : {{theme_uri}}
@@ -18,40 +18,37 @@ Variables b:skin
 
   Admin
   =====================
-  {{> setAdmin}}
+  {{> setting-admin}}
 
   General
   =====================
-  {{> setGeneral}}
+  {{> setting-general}}
 
   Cards
   =====================
-  {{> setCards}}
+  {{> setting-cards}}
 
   Posts
   =====================
-  {{> setPosts}}
+  {{> setting-posts}}
 
   Comments
   =====================
-  {{> setComments}}
+  {{> setting-comments}}
 
   Functions
   =====================
-  {{> setFunctions}}
+  {{> setting-functions}}
 
   Translatable strings
   =====================
-  {{> Translatable}}
+  {{> setting-text}}
 
   Customization
   =====================
-  # Mandatory variable to enable dynamic layout
-  {{variable "keycolor" type="color" value="#2196f3"}}
-  
   {{> Background}}
   {{> Font}}
-  {{> Widths}}
+  {{> Sizes}}
   {{> Color}}
   {{> Hack}}
 
@@ -60,27 +57,7 @@ Variables b:skin
 
   Skin CSS variables
   =====================*/
-  :root {
-    {{#each skinVars}}
-    {{#if (not (startsWith @key "dark-"))}}
-    --{{@key}}: {{this}};
-    {{/if}}
-    {{/each}}
-    --line-clamp: $(e.snippetLines);
-    --toc-text: "$(t.toc)";
-    --copy-text: "$(t.copy)";
-    --copied-text: "$(t.copied)";
-    --show-more-text: "$(t.showMore)";
-    --show-less-text: "$(t.showLess)";
-  }
-
-  [data-theme="dark"] {
-  {{#each skinVars}}
-    {{#if (startsWith @key "dark-")}}
-    --{{replace @key "dark-" ""}}: {{this}};
-    {{/if}}
-  {{/each}}
-  }
+  {{> css-variables}}
 
   /*
   Your custom styles

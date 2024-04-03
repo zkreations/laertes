@@ -110,7 +110,7 @@
     align-items: flex-start;
     gap: var(--typography-spacing);
 
-    > * { 
+    > * {
       flex: 1 1 0;
       margin: 0;
     }
@@ -119,7 +119,7 @@
       flex-direction: column
     }
   }
-  
+
   // Create Gallery
   :where([class*=gallery]) {
     display: flex;
@@ -155,7 +155,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--typography-spacing);
-  
+
     > * {
       flex: 1 1 0;
     }

@@ -1,4 +1,4 @@
-{{!-- 
+{{!--
 Module for generating posts view (isPost, isPage)
 @requires widget:Blog
 --}}
@@ -45,7 +45,7 @@ Module for generating posts view (isPost, isPage)
       <b:include name="postMetadataJSON"/>
       {{!-- Hook for after post footer --}}
       <b:include cond='data:view.isPost' name='post:afterFooter'/>
-    
+
       {{!-- Post bottom meta --}}
       <b:include cond='data:view.isPost' name='post:bottomMeta'/>
     </article>

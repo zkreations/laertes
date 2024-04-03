@@ -1,7 +1,7 @@
 import {
   getScrollbarWidth,
   getTransitionDuration
-} from '../_utils.js'
+} from '../utils.js'
 
 const buttons = document.querySelectorAll('[data-modal]')
 

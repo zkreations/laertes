@@ -97,7 +97,7 @@
     &:not(#{&}-full) {
       display: grid;
     }
-  
+
     grid-template-areas:
         "content"
         "sidebar";
@@ -105,14 +105,14 @@
     gap: var(--block-space);
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-  
+
     @include breakpoint(l) {
       padding-top: 2.5rem;
       padding-bottom: 2.5rem;
       grid-template-areas: var(--content-areas, "content sidebar");
       grid-template-columns: var(--content-columns, minmax(0, 1fr) var(--width-sidebar));
     }
-  
+
     &-reverse {
       --content-areas: "sidebar content";
       --content-columns: var(--width-sidebar) minmax(0, 1fr);
@@ -147,7 +147,7 @@
       color: var(--color-text);
     }
   }
-  
+
   &-author-image {
     border-radius: 0.5rem;
   }
@@ -170,7 +170,7 @@
     gap: var(--block-space);
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-  
+
     @include breakpoint(l) {
       padding-top: 2.5rem;
       padding-bottom: 2.5rem;

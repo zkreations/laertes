@@ -5,9 +5,9 @@ Module to insert above the closing body tag
 <b:includable id='m:foot'>
   {{!-- Scheme toggle --}}
   <b:include cond='data:view.isPreview' name='m:toggleScheme' data='{ class: "preview-toggle" }'/>
-  {{#if devMode}}
+  {{#if development}}
     <script>//<![CDATA[
-      {{asset "/dist/js/main"}}//]]>
+      {{asset "/dist/js/main.js"}}//]]>
     </script>
   {{/if}}
 </b:includable>
