@@ -2,11 +2,11 @@
 title: HeaderCover
 ---
 
-Muestra una imagen que cubre todo el ancho disponible en el Header. Puede contener un enlace y un texto descriptivo. 
+Muestra una imagen que cubre todo el ancho disponible en el Header. Puede contener un enlace y un texto descriptivo.
 
 ## Vista previa
 
-{{< preview "/images/widgets/HeaderCover.png" >}}
+{{< preview "/images/widgets/HeaderCover.webp" >}}
 
 ## Opciones
 

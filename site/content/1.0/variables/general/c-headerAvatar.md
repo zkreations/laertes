@@ -13,7 +13,7 @@ Muestra la imagen de perfil del autor en la parte superior de la página.
 Cualquier valor ingresado será interpretado como una URL de imagen.
 
 {{< table >}}
-| Value        | Nombre    | Tipo                 | Descripción   
+| Value        | Nombre    | Tipo                 | Descripción
 | ------------ | ----------| ---------------------| --------------
 | `avatar.jpg` | Avatar    | {{< data image >}}   | URL de avatar por defecto
 {{< /table >}}
@@ -23,5 +23,5 @@ Cualquier valor ingresado será interpretado como una URL de imagen.
 
 Se utilizará para la imagen de perfil que se ubica en el encabezado de la página.
 
-{{< preview "/images/variables/general/c-headerAvatar.png" >}}
+{{< preview "/images/variables/general/c-headerAvatar.webp" >}}
 

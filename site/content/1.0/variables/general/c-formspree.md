@@ -13,7 +13,7 @@ Identificador único de un formulario creado en [formspree.io](https://formspree
 Cualquier valor ingresado será interpretado como una cadena de texto.
 
 {{< table >}}
-| Value         | Nombre        | Tipo                 | Descripción   
+| Value         | Nombre        | Tipo                 | Descripción
 | ------------- | ------------- | ---------------------| --------------
 | `YourID`      | ID Formulario | {{< data string >}}  | Identificador de un formulario de [formspree.io](https://formspree.io/)
 {{< /table >}}

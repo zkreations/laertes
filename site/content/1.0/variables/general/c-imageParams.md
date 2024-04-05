@@ -13,7 +13,7 @@ Agrega parámetros de imágenes alojadas en Google.
 Si el valor ingresado no es válido, la imagen no se mostrará correctamente.
 
 {{< table >}}
-| Value                           | Nombre        | Tipo                           | Descripción   
+| Value                           | Nombre        | Tipo                           | Descripción
 | ------------------------------- | ------------- | ------------------------------ | --------------
 | {{< data "{image_params}" >}}   | Parámetros    | {{< data "{image_params}" >}}  | Parámetros de imágenes alojadas en Google
 {{< /table >}}

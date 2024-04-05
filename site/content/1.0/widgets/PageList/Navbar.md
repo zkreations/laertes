@@ -6,13 +6,13 @@ Muestra una barra de menú secundario. Este widget se obtiene del **widget PageL
 
 ## Vista previa
 
-{{< preview "/images/widgets/Navbar.png" >}}
+{{< preview "/images/widgets/Navbar.webp" >}}
 
 ## Redes sociales
 
 Si el nombre del enlace es una de las [redes sociales disponibles en meteor icons](https://meteoricons.com/#social), los elementos se organizarán automáticamente en la barra del lado derecho.
 
-{{< preview "/images/widgets/NavbarSocial.png" >}}
+{{< preview "/images/widgets/NavbarSocial.webp" >}}
 
 ## Opciones
 

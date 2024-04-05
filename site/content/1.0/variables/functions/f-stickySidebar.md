@@ -13,7 +13,7 @@ Habilita el sidebar pegajoso en el blog.
 Si el valor ingresado no es válido, el valor por defecto será `true`.
 
 {{< table >}}
-| Value                       | Nombre           | Tipo                         | Descripción   
+| Value                       | Nombre           | Tipo                         | Descripción
 | --------------------------- | ---------------- | ---------------------------- | --------------
 | {{< data "{fixed_mode}" >}} | Modo de fijado   | {{< data "{fixed_mode}" >}}  | Fija el sidebar según el modo ingresado
 | `true`                      | Verdadero        | {{< data boolean >}}         | Fija el sidebar globalmente

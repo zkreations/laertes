@@ -6,7 +6,7 @@ Fija un post en la página principal. Puede ser utilizado para mostrar un artíc
 
 ## Vista previa
 
-{{< preview "/images/widgets/PinnedPost.png" >}}
+{{< preview "/images/widgets/PinnedPost.webp" >}}
 
 ## Opciones
 

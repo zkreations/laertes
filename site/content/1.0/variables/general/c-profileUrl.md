@@ -13,7 +13,7 @@ Establece un enlace predeterminado cuando el perfil de Blogger **no es público*
 Cualquier valor ingresado será interpretado como un enlace.
 
 {{< table >}}
-| Value        | Nombre        | Tipo                 | Descripción   
+| Value        | Nombre        | Tipo                 | Descripción
 | ------------ | ------------- | -------------------- | --------------
 | `link`       | Url de autor  | {{< data url >}}  | Enlace de perfil predeterminado
 {{< /table >}}

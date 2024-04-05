@@ -14,7 +14,7 @@ Enlace que será usado para la etiqueta de patrocinio.
 Cualquier valor ingresado será interpretado como un enlace.
 
 {{< table >}}
-| Value           | Nombre                     | Tipo                | Descripción   
+| Value           | Nombre                     | Tipo                | Descripción
 | --------------- | -------------------------- | ------------------- | --------------
 | `link`          | Url para los patrocinios   | {{< data string >}} | Enlace de patrocinio
 {{< /table >}}

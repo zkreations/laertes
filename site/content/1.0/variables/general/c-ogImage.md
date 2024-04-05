@@ -13,7 +13,7 @@ Imagen predeterminada (1200x630) para metadatos de **Open Graph**. Esta imagen s
 Cualquier valor ingresado será interpretado como una URL de imagen.
 
 {{< table >}}
-| Value            | Nombre             | Tipo                | Descripción   
+| Value            | Nombre             | Tipo                | Descripción
 | ---------------- | ------------------ | ------------------- | --------------
 | `og-image.jpg`   | Imagen Open Graph  | {{< data image >}}  | Imagen destinada a la etiqueta `og:image`
 {{< /table >}}

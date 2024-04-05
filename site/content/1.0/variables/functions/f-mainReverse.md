@@ -13,7 +13,7 @@ Intercambia de lugar el cuerpo del **blog** con el **sidebar**.
 Si el valor ingresado no es válido, el valor por defecto será `true`.
 
 {{< table >}}
-| Value          | Nombre     | Tipo                 | Descripción   
+| Value          | Nombre     | Tipo                 | Descripción
 | -------------- | ---------- | -------------------- | --------------
 | `true`         | Verdadero  | {{< data boolean >}} | Intercambia la posición del blog con el sidebar
 | `false`        | Falso      | {{< data boolean >}} | Mantiene la posición del blog y el sidebar

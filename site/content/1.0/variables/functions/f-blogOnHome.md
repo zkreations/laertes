@@ -13,7 +13,7 @@ Habilita el Blog en la página de inicio del sitio. No tiene efecto en el resto 
 Si el valor ingresado no es válido, el valor por defecto será `true`.
 
 {{< table >}}
-| Value          | Nombre    | Tipo                    | Descripción   
+| Value          | Nombre    | Tipo                    | Descripción
 | -------------- | ----------| ------------------------| --------------
 | `true`         | Verdadero | {{< data boolean >}}    | Muestra el Blog en la página de inicio
 | `false`        | Falso     | {{< data boolean >}}    | Oculta el Blog en la página de inicio
