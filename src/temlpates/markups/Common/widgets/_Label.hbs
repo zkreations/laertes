@@ -33,10 +33,12 @@ Content of the widget Label
         </div>
         {{!-- Show the "Show more" and "Show less" buttons --}}
         <b:if cond='!data:isHeader'>
+        <b:if cond='data:labels.length > 8'>
           <label expr:for='data:instanceId' class='labels-button'>
             <span class='labels-more'><data:messages.showMore/> (+<b:eval expr='data:labels.length - 8'/>)</span>
             <span class='labels-less'><data:messages.showLess/></span>
           </label>
+        </b:if>
         </b:if>
       </b:with>
     </div>
